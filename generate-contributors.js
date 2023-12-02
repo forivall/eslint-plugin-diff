@@ -4,7 +4,7 @@ const fs = require("fs");
 const options = {
   hostname: "api.github.com",
   port: 443,
-  path: "/repos/paleite/eslint-plugin-diff/contributors",
+  path: "/repos/forivall/eslint-plugin-diff/contributors",
   method: "GET",
   headers: {
     "User-Agent": "node.js", // GitHub requires a user-agent header
