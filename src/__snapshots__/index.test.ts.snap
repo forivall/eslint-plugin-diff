@@ -8,11 +8,11 @@ exports[`plugin should match expected export 1`] = `
         "files": [
           "*",
         ],
-        "processor": "diff/ci",
+        "processor": "@forivall/diff/ci",
       },
     ],
     "plugins": [
-      "diff",
+      "@forivall/diff",
     ],
   },
   "committed": {
@@ -21,11 +21,11 @@ exports[`plugin should match expected export 1`] = `
         "files": [
           "*",
         ],
-        "processor": "diff/committed",
+        "processor": "@forivall/diff/committed",
       },
     ],
     "plugins": [
-      "diff",
+      "@forivall/diff",
     ],
   },
   "diff": {
@@ -34,11 +34,11 @@ exports[`plugin should match expected export 1`] = `
         "files": [
           "*",
         ],
-        "processor": "diff/diff",
+        "processor": "@forivall/diff/diff",
       },
     ],
     "plugins": [
-      "diff",
+      "@forivall/diff",
     ],
   },
   "staged": {
@@ -47,11 +47,11 @@ exports[`plugin should match expected export 1`] = `
         "files": [
           "*",
         ],
-        "processor": "diff/staged",
+        "processor": "@forivall/diff/staged",
       },
     ],
     "plugins": [
-      "diff",
+      "@forivall/diff",
     ],
   },
 }

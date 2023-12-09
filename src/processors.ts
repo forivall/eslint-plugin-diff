@@ -148,11 +148,11 @@ const staged = getProcessors("staged");
 const committed = getProcessors("committed");
 
 const diffConfig: Linter.BaseConfig = {
-  plugins: ["diff"],
+  plugins: ["@forivall/diff"],
   overrides: [
     {
       files: ["*"],
-      processor: "diff/diff",
+      processor: "@forivall/diff/diff",
     },
   ],
 };
@@ -161,31 +161,31 @@ const ciConfig: Linter.BaseConfig =
   process.env.CI === undefined
     ? {}
     : {
-        plugins: ["diff"],
+        plugins: ["@forivall/diff"],
         overrides: [
           {
             files: ["*"],
-            processor: "diff/ci",
+            processor: "@forivall/diff/ci",
           },
         ],
       };
 
 const stagedConfig: Linter.BaseConfig = {
-  plugins: ["diff"],
+  plugins: ["@forivall/diff"],
   overrides: [
     {
       files: ["*"],
-      processor: "diff/staged",
+      processor: "@forivall/diff/staged",
     },
   ],
 };
 
 const committedConfig: Linter.BaseConfig = {
-  plugins: ["diff"],
+  plugins: ["@forivall/diff"],
   overrides: [
     {
       files: ["*"],
-      processor: "diff/committed",
+      processor: "@forivall/diff/committed",
     },
   ],
 };
