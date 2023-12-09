@@ -30,9 +30,12 @@ if (process.env.CI !== undefined) {
  * them from being processed in the first place, as a performance optimization.
  * This is increasingly useful the more files there are in the repository.
  */
-const getPreProcessor =
-  (diffFileList: string[], diffType: DiffType) =>
-  (text: string, filename: string) => {
+const getPreProcessor = (diffType: DiffType) => {
+  let diffFileList: string[] | undefined;
+  return (text: string, filename: string) => {
+    if (!diffFileList) {
+      diffFileList = getDiffFileList(diffType);
+    }
     let untrackedFileList = getUntrackedFileList(diffType);
     const shouldRefresh =
       diffType === "working" &&
@@ -56,7 +59,7 @@ const getPreProcessor =
 
     return shouldBeProcessed ? [text] : [];
   };
-
+};
 const isLineWithinRange = (line: number) => (range: Range) =>
   range.isWithinRange(line);
 
@@ -133,10 +136,9 @@ const getProcessors = (
     processorType === "staged" || processorType === "committed"
       ? processorType
       : "working";
-  const diffFileList = getDiffFileList(diffType);
 
   return {
-    preprocess: getPreProcessor(diffFileList, diffType),
+    preprocess: getPreProcessor(diffType),
     postprocess: getPostProcessor(diffType),
     supportsAutofix: processorType !== "committed",
   };
