@@ -27,9 +27,12 @@ if (process.env.CI !== undefined) {
  * them from being processed in the first place, as a performance optimization.
  * This is increasingly useful the more files there are in the repository.
  */
-const getPreProcessor =
-  (diffFileList: string[], staged: boolean) =>
-  (text: string, filename: string) => {
+const getPreProcessor = (staged: boolean) => {
+  let diffFileList: string[] | undefined;
+  return (text: string, filename: string) => {
+    if (!diffFileList) {
+      diffFileList = getDiffFileList(staged);
+    }
     let untrackedFileList = getUntrackedFileList(staged);
     const shouldRefresh =
       !diffFileList.includes(filename) && !untrackedFileList.includes(filename);
@@ -43,6 +46,7 @@ const getPreProcessor =
 
     return shouldBeProcessed ? [text] : [];
   };
+};
 
 const isLineWithinRange = (line: number) => (range: Range) =>
   range.isWithinRange(line);
@@ -117,10 +121,9 @@ const getProcessors = (
   processorType: ProcessorType
 ): Required<Linter.Processor> => {
   const staged = processorType === "staged";
-  const diffFileList = getDiffFileList(staged);
 
   return {
-    preprocess: getPreProcessor(diffFileList, staged),
+    preprocess: getPreProcessor(staged),
     postprocess: getPostProcessor(staged),
     supportsAutofix: true,
   };
