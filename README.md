@@ -1,8 +1,10 @@
-# eslint-plugin-diff
+# @forivall/eslint-plugin-diff
 
-![](https://img.shields.io/npm/dt/eslint-plugin-diff?style=flat-square&logo=npm&logoColor=white) [![codecov](https://codecov.io/gh/forivall/eslint-plugin-diff/branch/main/graph/badge.svg?token=W0LPKHZCF5)](https://codecov.io/gh/forivall/eslint-plugin-diff)
+![](https://img.shields.io/npm/dt/@forivall/eslint-plugin-diff?style=flat-square&logo=npm&logoColor=white) [![codecov](https://codecov.io/gh/forivall/eslint-plugin-diff/branch/main/graph/badge.svg?token=W0LPKHZCF5)](https://codecov.io/gh/forivall/eslint-plugin-diff)
 
 You've got changes, we've got checks. Run ESLint on your modified lines only.
+
+> This is a friendly fork of [`eslint-plugin-diff`](https://npm.im/eslint-plugin-diff)
 
 ## What's the big deal?
 
@@ -48,7 +50,7 @@ Only lint changes
 
 ```json
 {
-  "extends": ["plugin:diff/diff"]
+  "extends": ["plugin:@forivall/diff/diff"]
 }
 ```
 
@@ -60,7 +62,7 @@ In a CI-environment, only lint changes. Locally, skip the plugin (i.e. lint ever
 
 ```json
 {
-  "extends": ["plugin:diff/ci"]
+  "extends": ["plugin:@forivall/diff/ci"]
 }
 ```
 
@@ -70,7 +72,7 @@ Only lint the changes you've staged for an upcoming commit.
 
 ```json
 {
-  "extends": ["plugin:diff/staged"]
+  "extends": ["plugin:@forivall/diff/staged"]
 }
 ```
 
@@ -80,7 +82,7 @@ Only lint the changes you've committed, for running in a pre-push hook. You shou
 
 ```json
 {
-  "extends": ["plugin:diff/committed"]
+  "extends": ["plugin:@forivall/diff/committed"]
 }
 ```
 
@@ -120,6 +122,6 @@ npx --no-install eslint --ext .js,.ts,.tsx .
 ## Note
 
 - You can use any valid commit syntax for `ESLINT_PLUGIN_DIFF_COMMIT`. See [git's official documentation on the syntax](https://git-scm.com/docs/git-diff#Documentation/git-diff.txt-emgitdiffemltoptionsgtltcommitgt--ltpathgt82308203)
-- You can choose to lint all changes (using `"plugin:diff/diff"`) or staged changes only (using `"plugin:diff/staged"`).
-- We recommend using `"plugin:diff/diff"`, which is equivalent to running `git diff HEAD`.
-- `"plugin:diff/staged"` is equivalent to running `git diff HEAD --staged`
+- You can choose to lint all changes (using `"plugin:@forivall/diff/diff"`) or staged changes only (using `"plugin:@forivall/diff/staged"`).
+- We recommend using `"plugin:@forivall/diff/diff"`, which is equivalent to running `git diff HEAD`.
+- `"plugin:@forivall/diff/staged"` is equivalent to running `git diff HEAD --staged`
